@@ -1,3 +1,7 @@
 export default function Home() {
-  return <h1>Checkout Whitebook Web</h1>;
+  return (
+    <div>
+      <h1>Checkout Whitebook Web</h1>
+    </div>
+  );
 }
