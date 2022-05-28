@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Container } from './plans.module';
 import { CreditCards } from '../components/CreditCards';
 import { Input } from '../components/Input';
+import { Select } from '../components/Select';
 
 export default function Plans() {
   return (
@@ -34,6 +35,11 @@ export default function Plans() {
       />
       <Input name="creditCardCPF" label="CPF" placeholder="000.000.000-00" />
       <Input name="couponCode" label="Cupom" placeholder="Insira aqui" />
+      <Select
+        name="installments"
+        label="Número de parcelas"
+        placeholder="Selecionar"
+      />
     </Container>
   );
 }

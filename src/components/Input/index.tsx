@@ -12,7 +12,12 @@ export function Input({ name, label, placeholder, type = 'text' }: InputProps) {
   return (
     <Container>
       <span>{label}</span>
-      <input name={name} type={type} placeholder={placeholder} />
+      <input
+        id={`input-${name}`}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+      />
     </Container>
   );
 }
