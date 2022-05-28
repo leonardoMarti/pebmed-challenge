@@ -4,6 +4,7 @@ import { Container } from './plans.module';
 import { CreditCards } from '../components/CreditCards';
 import { Input } from '../components/Input';
 import { Select } from '../components/Select';
+import { Button } from '../components/Button';
 
 export default function Plans() {
   return (
@@ -40,6 +41,7 @@ export default function Plans() {
         label="Número de parcelas"
         placeholder="Selecionar"
       />
+      <Button name="submitPlans" type="submit" label="Finalizar pagamento" />
     </Container>
   );
 }
