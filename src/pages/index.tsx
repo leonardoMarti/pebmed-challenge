@@ -1,15 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
-import { Header } from '../components/Header';
+import { Container } from './plans.module';
 
-export default function Home() {
+export default function Plans() {
   return (
-    <>
+    <Container>
       <Head>
         <title>Whitebook</title>
       </Head>
-      <Header />
       <h1>Checkout Whitebook Web</h1>
-    </>
+    </Container>
   );
 }

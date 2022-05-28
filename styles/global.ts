@@ -1,21 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
+import { COLORS } from '../src/constants/colors';
 
 export const GlobalStyle = createGlobalStyle`
-	:root {
-    --blue-900:#191847;
-		
-		--orange-900: #F5850B;
-
-		--black-900: #151516;
-
-		--grey-500: #666173;
-		--grey-300: #C9C5D4;
-		--grey-100: #F4F3F6;
-
-		--white-100: #FFFFFF;
-		--white-200:#E5E5E5;
-	}
-
 	* {
 		margin:0;
 		padding: 0;
@@ -33,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background: var(--white-200);
+		background: ${COLORS.WHITE200};
 		-webkit-font-smoothing: antialiased;
 	}
 
