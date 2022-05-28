@@ -13,8 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 		--grey-100: #F4F3F6;
 
 		--white-100: #FFFFFF;
-
-		--background:#E5E5E5;
+		--white-200:#E5E5E5;
 	}
 
 	* {
@@ -34,13 +33,12 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background: var(--background);
+		background: var(--white-200);
 		-webkit-font-smoothing: antialiased;
 	}
 
 	body, input, button {
-    font-family: "DM Sans";
-		font-weight: 400;
+		font: 400 1rem "DM Sans", sans-serif;
 	}
 
 	h1, h2, h3, h4, h5, h6, strong {
