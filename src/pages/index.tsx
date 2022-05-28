@@ -43,6 +43,7 @@ export default function Plans() {
           name="installments"
           label="Número de parcelas"
           placeholder="Selecionar"
+          mb="2.5"
         />
         <Button name="submitPlans" type="submit" label="Finalizar pagamento" />
       </FormWrapper>

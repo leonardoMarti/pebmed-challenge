@@ -5,16 +5,27 @@ interface SelectProps {
   name: string;
   label: string;
   placeholder?: string;
+  mb?: string;
 }
 
-export function Select({ name, label, placeholder }: SelectProps) {
+export function Select({ name, label, placeholder, mb }: SelectProps) {
+  const installmentsList = [
+    { label: 'x1', value: 1 },
+    { label: 'x2', value: 2 },
+    { label: 'x4', value: 4 },
+    { label: 'x6', value: 6 },
+    { label: 'x12', value: 12 },
+  ];
+
   return (
-    <Container>
+    <Container mb={mb}>
       <span>{label}</span>
       <select id={`select-${name}`} name={name} placeholder={placeholder}>
-        <option value="valor1">Valor 1</option>
-        <option value="valor2">Valor 2</option>
-        <option value="valor3">Valor 3</option>
+        {installmentsList?.map((inst) => (
+          <option key={inst?.value} value={inst?.value}>
+            {inst?.label}
+          </option>
+        ))}
       </select>
     </Container>
   );
