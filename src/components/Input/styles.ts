@@ -20,6 +20,7 @@ export const SInput = styled.input`
   border-bottom: 1px solid ${COLORS.GREY100};
   outline: 0;
   padding-bottom: 0.625rem;
+  font-size: 1rem;
 
   ::placeholder {
     color: ${COLORS.GRER300};

@@ -19,8 +19,13 @@ export function Select({ name, label, placeholder, mb }: SelectProps) {
 
   return (
     <Container mb={mb}>
-      <span>{label}</span>
-      <select id={`select-${name}`} name={name} placeholder={placeholder}>
+      <span className="label">{label}</span>
+      <select
+        id={`select-${name}`}
+        className="select"
+        name={name}
+        placeholder={placeholder}
+      >
         {installmentsList?.map((inst) => (
           <option key={inst?.value} value={inst?.value}>
             {inst?.label}
