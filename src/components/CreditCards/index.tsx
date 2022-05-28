@@ -20,7 +20,10 @@ export function CreditCards() {
       />
       <Image src="/images/visa.svg" width="32px" height="23px" alt="Visa" />
       <Image src="/images/elo.svg" width="32px" height="23px" alt="Elo" />
-      <Image src="/images/iugu.svg" width="29px" height="11px" alt="Iugu" />
+      <div>
+        <span>Pagamentos por</span>
+        <Image src="/images/iugu.svg" width="29px" height="11px" alt="Iugu" />
+      </div>
     </Container>
   );
 }
