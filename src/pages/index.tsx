@@ -1,11 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
-import { Container, FormWrapper } from './plans.module';
+import { Container, LeftSection, RightSection } from './plans.module';
 import { CreditCards } from '../components/CreditCards';
 import { Input } from '../components/Input';
 import { Select } from '../components/Select';
 import { Button } from '../components/Button';
 import { Title } from '../components/Title';
+import { RadioCard } from '../components/RadioCard';
 
 export default function Plans() {
   return (
@@ -13,7 +14,7 @@ export default function Plans() {
       <Head>
         <title>Whitebook</title>
       </Head>
-      <FormWrapper>
+      <LeftSection>
         <Title label="Estamos quase lá!" mb={0.625} />
         <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
 
@@ -46,7 +47,15 @@ export default function Plans() {
           mb="2.5"
         />
         <Button name="submitPlans" type="submit" label="Finalizar pagamento" />
-      </FormWrapper>
+      </LeftSection>
+      <RightSection>
+        <Title label="Confira o seu plano:" mb={0.375} />
+        <span className="email">fulano@cicrano.com.br</span>
+        <div className="radioCardWrapper">
+          <RadioCard name="test" />
+          <RadioCard name="test" />
+        </div>
+      </RightSection>
     </Container>
   );
 }
