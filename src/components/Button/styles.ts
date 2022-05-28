@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { COLORS } from '../../constants/colors';
 
-export const SButton = styled.button`
-  display: flex;
+interface SButtonProps {
+  hidden?: boolean;
+}
+
+export const SButton = styled.button<SButtonProps>`
+  display: ${({ hidden }) => (hidden ? 'none' : 'flex')};
   justify-content: center;
   align-items: center;
   padding: 18px 20px;

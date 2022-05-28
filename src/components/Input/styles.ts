@@ -21,6 +21,7 @@ export const SInput = styled.input`
   outline: 0;
   padding-bottom: 0.625rem;
   font-size: 1rem;
+  width: 100%;
 
   ::placeholder {
     color: ${COLORS.GRER300};

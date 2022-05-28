@@ -8,16 +8,22 @@ import { Button } from '../components/Button';
 import { Title } from '../components/Title';
 import { RadioCard } from '../components/RadioCard';
 import { ToolTip } from '../components/ToolTip';
+import { WindowDimension } from '../hooks/window-dimension';
+import { BREAKPOINTS } from '../constants/media-queries';
 
 export default function Plans() {
+  const windowWidth = WindowDimension();
+
   return (
     <Container>
       <Head>
-        <title>Whitebook</title>
+        <title>Whitebook - Planos</title>
       </Head>
       <LeftSection>
-        <Title label="Estamos quase lá!" mb={0.625} />
-        <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
+        <div className="titleWrapper">
+          <Title label="Estamos quase lá!" mb={0.625} />
+          <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
+        </div>
 
         <div className="creditCardWrapper">
           <CreditCards />
@@ -28,12 +34,15 @@ export default function Plans() {
           label="Número do cartão"
           placeholder="0000 0000 0000 0000"
         />
-        <Input
-          name="creditCardExpirationDate"
-          label="Validade"
-          placeholder="MM/AA"
-        />
-        <Input name="creditCardCVV" label="CVV" placeholder="000" />
+        <div className="inputWrapper">
+          <Input
+            name="creditCardExpirationDate"
+            label="Validade"
+            placeholder="MM/AA"
+          />
+          <Input name="creditCardCVV" label="CVV" placeholder="000" />
+        </div>
+
         <Input
           name="creditCardHolder"
           label="Nome impresso no cartão"
@@ -47,11 +56,21 @@ export default function Plans() {
           placeholder="Selecionar"
           mb="2.5"
         />
-        <Button name="submitPlans" type="submit" label="Finalizar pagamento" />
+        <div>
+          <Button
+            name="submitPlans"
+            type="submit"
+            label="Finalizar pagamento"
+            hidden={windowWidth < BREAKPOINTS.SM}
+          />
+        </div>
       </LeftSection>
       <RightSection>
-        <Title label="Confira o seu plano:" mb={0.375} />
-        <span className="email">fulano@cicrano.com.br</span>
+        <div className="titleWrapper">
+          <Title label="Confira o seu plano:" mb={0.375} />
+          <span className="email">fulano@cicrano.com.br</span>
+        </div>
+
         <div className="radioCardWrapper">
           <RadioCard name="test" />
           <RadioCard name="test" />
@@ -63,6 +82,13 @@ export default function Plans() {
             description="Descrição da cobrança"
           />
         </div>
+
+        <Button
+          name="submitPlans"
+          type="submit"
+          label="Finalizar pagamento"
+          hidden={windowWidth > BREAKPOINTS.SM}
+        />
       </RightSection>
     </Container>
   );
