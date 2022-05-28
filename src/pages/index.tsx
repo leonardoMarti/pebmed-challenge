@@ -7,6 +7,7 @@ import { Select } from '../components/Select';
 import { Button } from '../components/Button';
 import { Title } from '../components/Title';
 import { RadioCard } from '../components/RadioCard';
+import { ToolTip } from '../components/ToolTip';
 
 export default function Plans() {
   return (
@@ -54,6 +55,13 @@ export default function Plans() {
         <div className="radioCardWrapper">
           <RadioCard name="test" />
           <RadioCard name="test" />
+        </div>
+        <div className="toolTipWrapper">
+          <ToolTip
+            id="help-tool-tip"
+            label="Sobre a cobrança"
+            description="Descrição da cobrança"
+          />
         </div>
       </RightSection>
     </Container>

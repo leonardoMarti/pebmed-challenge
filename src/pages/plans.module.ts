@@ -46,4 +46,10 @@ export const RightSection = styled.div`
     flex-direction: column;
     gap: 0.75rem;
   }
+
+  .toolTipWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.875rem;
+  }
 `;
