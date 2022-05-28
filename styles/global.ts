@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	body {
-		background: ${COLORS.WHITE200};
+		background: ${COLORS.WHITE100};
 		-webkit-font-smoothing: antialiased;
 	}
 
@@ -29,6 +29,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	h1, h2, h3, h4, h5, h6, strong {
 		font-weight: 400;
+		color: ${COLORS.BLACK900};
 	}
 
 	button {

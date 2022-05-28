@@ -6,3 +6,18 @@ export const Container = styled.main`
   margin: 0 auto;
   max-width: 870px;
 `;
+
+export const FormWrapper = styled.div`
+  max-width: 330px;
+
+  .subTitle {
+    font-size: 1rem;
+    line-height: 1.3125rem;
+    margin-bottom: 1.875rem;
+  }
+
+  .creditCardWrapper {
+    display: flex;
+    justify-content: center;
+  }
+`;

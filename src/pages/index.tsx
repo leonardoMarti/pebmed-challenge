@@ -1,10 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
-import { Container } from './plans.module';
+import { Container, FormWrapper } from './plans.module';
 import { CreditCards } from '../components/CreditCards';
 import { Input } from '../components/Input';
 import { Select } from '../components/Select';
 import { Button } from '../components/Button';
+import { Title } from '../components/Title';
 
 export default function Plans() {
   return (
@@ -12,36 +13,39 @@ export default function Plans() {
       <Head>
         <title>Whitebook</title>
       </Head>
-      <h1>Estamos quase lá!</h1>
+      <FormWrapper>
+        <Title label="Estamos quase lá!" mb={0.625} />
+        <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
 
-      <h2>Insira seus dados de pagamento abaixo:</h2>
+        <div className="creditCardWrapper">
+          <CreditCards />
+        </div>
 
-      <CreditCards />
-
-      <Input
-        name="creditCardNumber"
-        label="Número do cartão"
-        placeholder="0000 0000 0000 0000"
-      />
-      <Input
-        name="creditCardExpirationDate"
-        label="Validade"
-        placeholder="MM/AA"
-      />
-      <Input name="creditCardCVV" label="CVV" placeholder="000" />
-      <Input
-        name="creditCardHolder"
-        label="Nome impresso no cartão"
-        placeholder="Seu nome"
-      />
-      <Input name="creditCardCPF" label="CPF" placeholder="000.000.000-00" />
-      <Input name="couponCode" label="Cupom" placeholder="Insira aqui" />
-      <Select
-        name="installments"
-        label="Número de parcelas"
-        placeholder="Selecionar"
-      />
-      <Button name="submitPlans" type="submit" label="Finalizar pagamento" />
+        <Input
+          name="creditCardNumber"
+          label="Número do cartão"
+          placeholder="0000 0000 0000 0000"
+        />
+        <Input
+          name="creditCardExpirationDate"
+          label="Validade"
+          placeholder="MM/AA"
+        />
+        <Input name="creditCardCVV" label="CVV" placeholder="000" />
+        <Input
+          name="creditCardHolder"
+          label="Nome impresso no cartão"
+          placeholder="Seu nome"
+        />
+        <Input name="creditCardCPF" label="CPF" placeholder="000.000.000-00" />
+        <Input name="couponCode" label="Cupom" placeholder="Insira aqui" />
+        <Select
+          name="installments"
+          label="Número de parcelas"
+          placeholder="Selecionar"
+        />
+        <Button name="submitPlans" type="submit" label="Finalizar pagamento" />
+      </FormWrapper>
     </Container>
   );
 }

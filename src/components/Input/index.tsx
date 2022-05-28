@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container, SInput } from './styles';
 
 interface InputProps {
   name: string;
@@ -11,8 +11,8 @@ interface InputProps {
 export function Input({ name, label, placeholder, type = 'text' }: InputProps) {
   return (
     <Container>
-      <span>{label}</span>
-      <input
+      <span className="label">{label}</span>
+      <SInput
         id={`input-${name}`}
         name={name}
         type={type}
