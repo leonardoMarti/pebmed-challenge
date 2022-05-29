@@ -15,81 +15,90 @@ export default function Plans() {
   const windowWidth = WindowDimension();
 
   return (
-    <Container>
+    <>
       <Head>
         <title>Whitebook - Planos</title>
       </Head>
-      <LeftSection>
-        <div className="titleWrapper">
-          <Title label="Estamos quase lá!" mb={0.625} />
-          <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
-        </div>
 
-        <div className="creditCardWrapper">
-          <CreditCards />
-        </div>
+      <Container>
+        <LeftSection>
+          <div className="titleWrapper">
+            <Title label="Estamos quase lá!" mb={0.625} />
+            <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
+          </div>
 
-        <Input
-          name="creditCardNumber"
-          label="Número do cartão"
-          placeholder="0000 0000 0000 0000"
-        />
-        <div className="inputWrapper">
+          <div className="creditCardWrapper">
+            <CreditCards />
+          </div>
+
           <Input
-            name="creditCardExpirationDate"
-            label="Validade"
-            placeholder="MM/AA"
+            name="creditCardNumber"
+            label="Número do cartão"
+            placeholder="0000 0000 0000 0000"
           />
-          <Input name="creditCardCVV" label="CVV" placeholder="000" />
-        </div>
+          <div className="inputWrapper">
+            <Input
+              name="creditCardExpirationDate"
+              label="Validade"
+              placeholder="MM/AA"
+            />
+            <Input name="creditCardCVV" label="CVV" placeholder="000" />
+          </div>
 
-        <Input
-          name="creditCardHolder"
-          label="Nome impresso no cartão"
-          placeholder="Seu nome"
-        />
-        <Input name="creditCardCPF" label="CPF" placeholder="000.000.000-00" />
-        <Input name="couponCode" label="Cupom" placeholder="Insira aqui" />
-        <Select
-          name="installments"
-          label="Número de parcelas"
-          placeholder="Selecionar"
-          mb="2.5"
-        />
-        <div>
+          <Input
+            name="creditCardHolder"
+            label="Nome impresso no cartão"
+            placeholder="Seu nome"
+          />
+          <Input
+            name="creditCardCPF"
+            label="CPF"
+            placeholder="000.000.000-00"
+          />
+          <Input name="couponCode" label="Cupom" placeholder="Insira aqui" />
+          <Select
+            name="installments"
+            label="Número de parcelas"
+            placeholder="Selecionar"
+            mb="2.5"
+          />
+          <div>
+            <Button
+              name="submitPlans"
+              type="submit"
+              hidden={windowWidth < BREAKPOINTS.SM}
+            >
+              <span className="buttonLabel">Finalizar pagamento</span>
+            </Button>
+          </div>
+        </LeftSection>
+        <RightSection>
+          <div className="titleWrapper">
+            <Title label="Confira o seu plano:" mb={0.375} />
+            <span className="email">fulano@cicrano.com.br</span>
+          </div>
+
+          <div className="radioCardWrapper">
+            <RadioCard name="test" />
+            <RadioCard name="test" />
+          </div>
+          <div className="toolTipWrapper">
+            <ToolTip
+              id="help-tool-tip"
+              label="Sobre a cobrança"
+              description="Descrição da cobrança"
+            />
+          </div>
+
           <Button
             name="submitPlans"
             type="submit"
-            label="Finalizar pagamento"
-            hidden={windowWidth < BREAKPOINTS.SM}
-          />
-        </div>
-      </LeftSection>
-      <RightSection>
-        <div className="titleWrapper">
-          <Title label="Confira o seu plano:" mb={0.375} />
-          <span className="email">fulano@cicrano.com.br</span>
-        </div>
-
-        <div className="radioCardWrapper">
-          <RadioCard name="test" />
-          <RadioCard name="test" />
-        </div>
-        <div className="toolTipWrapper">
-          <ToolTip
-            id="help-tool-tip"
-            label="Sobre a cobrança"
-            description="Descrição da cobrança"
-          />
-        </div>
-
-        <Button
-          name="submitPlans"
-          type="submit"
-          label="Finalizar pagamento"
-          hidden={windowWidth > BREAKPOINTS.SM}
-        />
-      </RightSection>
-    </Container>
+            hidden={windowWidth > BREAKPOINTS.SM}
+          >
+            <span className="buttonLabel">Finalizar pagamento</span>
+          </Button>
+        </RightSection>
+      </Container>
+    </>
   );
 }

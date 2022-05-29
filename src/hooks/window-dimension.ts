@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 
 export function WindowDimension() {
-  const [windowDimenion, setWindowDimension] = useState(window.innerWidth);
+  const [windowDimenion, setWindowDimension] = useState(
+    typeof window !== 'undefined' ? window?.innerWidth : 0
+  );
 
   const detectSize = () => {
-    setWindowDimension(window.innerWidth);
+    setWindowDimension(window?.innerWidth);
   };
 
   useEffect(() => {

@@ -52,6 +52,12 @@ export const LeftSection = styled.div`
     display: flex;
     justify-content: center;
   }
+
+  .buttonLabel {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: ${COLORS.WHITE100};
+  }
 `;
 
 export const RightSection = styled.div`
@@ -99,5 +105,11 @@ export const RightSection = styled.div`
       margin-top: 1rem;
       margin-bottom: 3rem;
     }
+  }
+
+  .buttonLabel {
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: ${COLORS.WHITE100};
   }
 `;

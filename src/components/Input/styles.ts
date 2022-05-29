@@ -24,15 +24,15 @@ export const SInput = styled.input`
   width: 100%;
 
   ::placeholder {
-    color: ${COLORS.GRER300};
+    color: ${COLORS.GREY300};
     opacity: 1;
   }
 
   :-ms-input-placeholder {
-    color: ${COLORS.GRER300};
+    color: ${COLORS.GREY300};
   }
 
   ::-ms-input-placeholder {
-    color: ${COLORS.GRER300};
+    color: ${COLORS.GREY300};
   }
 `;

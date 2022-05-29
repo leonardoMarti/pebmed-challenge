@@ -18,7 +18,7 @@ export function ToolTip({ id, label, description }: ToolTipProps) {
       onMouseLeave={() => setShow(false)}
     >
       <span className="label">{label}</span>
-      <Image src="/images/help.svg" width="14px" height="14px" alt="Master" />
+      <Image src="/images/help.svg" width="14px" height="14px" alt="Help" />
       <SToolTip className="toolTip" show={show}>
         {description}
       </SToolTip>

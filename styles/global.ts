@@ -28,6 +28,10 @@ export const GlobalStyle = createGlobalStyle`
 		font: 400 1rem "DM Sans", sans-serif;
 	}
 
+	span {
+		color: ${COLORS.BLACK900};
+	}
+
 	h1, h2, h3, h4, h5, h6, strong {
 		font-weight: 400;
 		color: ${COLORS.BLACK900};
