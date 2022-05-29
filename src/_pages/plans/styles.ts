@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { COLORS } from '../constants/colors';
-import { MEDIA_QUERIES } from '../constants/media-queries';
+import { COLORS } from '../../constants/colors';
+import { MEDIA_QUERIES } from '../../constants/media-queries';
 
 export const Container = styled.main`
   display: flex;

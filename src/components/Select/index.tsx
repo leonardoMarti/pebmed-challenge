@@ -1,22 +1,20 @@
 import React from 'react';
 import { Container } from './styles';
 
+interface Option {
+  label: string;
+  value: number;
+}
+
 interface SelectProps {
   name: string;
   label: string;
   placeholder?: string;
   mb?: string;
+  options: Option[];
 }
 
-export function Select({ name, label, placeholder, mb }: SelectProps) {
-  const installmentsList = [
-    { label: 'x1', value: 1 },
-    { label: 'x2', value: 2 },
-    { label: 'x4', value: 4 },
-    { label: 'x6', value: 6 },
-    { label: 'x12', value: 12 },
-  ];
-
+export function Select({ options, name, label, placeholder, mb }: SelectProps) {
   return (
     <Container mb={mb}>
       <span className="label">{label}</span>
@@ -26,7 +24,7 @@ export function Select({ name, label, placeholder, mb }: SelectProps) {
         name={name}
         placeholder={placeholder}
       >
-        {installmentsList?.map((inst) => (
+        {options?.map((inst) => (
           <option key={inst?.value} value={inst?.value}>
             {inst?.label}
           </option>
