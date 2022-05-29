@@ -3,15 +3,18 @@ import { COLORS } from '../../constants/colors';
 import { MEDIA_QUERIES } from '../../constants/media-queries';
 
 export const Container = styled.main`
-  display: flex;
-  justify-content: space-between;
   margin: 0 auto 4rem auto;
   max-width: 870px;
 
-  ${MEDIA_QUERIES.smDown} {
-    justify-content: unset;
-    flex-direction: column;
-    padding: 0 1.25rem;
+  .form {
+    display: flex;
+    justify-content: space-between;
+
+    ${MEDIA_QUERIES.smDown} {
+      justify-content: unset;
+      flex-direction: column;
+      padding: 0 1.25rem;
+    }
   }
 `;
 

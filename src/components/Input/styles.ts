@@ -14,10 +14,15 @@ export const Container = styled.div`
   }
 `;
 
-export const SInput = styled.input`
+interface SInputProps {
+  error?: boolean;
+}
+
+export const SInput = styled.input<SInputProps>`
   background: ${COLORS.WHITE100};
   border: none;
-  border-bottom: 1px solid ${COLORS.GREY100};
+  border-bottom: 1px solid
+    ${({ error }) => (error ? COLORS.RED500 : COLORS.GREY100)};
   outline: 0;
   padding-bottom: 0.625rem;
   font-size: 1rem;

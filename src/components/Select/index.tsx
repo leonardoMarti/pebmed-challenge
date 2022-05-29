@@ -12,9 +12,17 @@ interface SelectProps {
   placeholder?: string;
   mb?: string;
   options: Option[];
+  register?: any;
 }
 
-export function Select({ options, name, label, placeholder, mb }: SelectProps) {
+export function Select({
+  options,
+  name,
+  label,
+  placeholder,
+  register,
+  mb,
+}: SelectProps) {
   return (
     <Container mb={mb}>
       <span className="label">{label}</span>
@@ -23,6 +31,7 @@ export function Select({ options, name, label, placeholder, mb }: SelectProps) {
         className="select"
         name={name}
         placeholder={placeholder}
+        {...register}
       >
         {options?.map((inst) => (
           <option key={inst?.value} value={inst?.value}>

@@ -9,17 +9,6 @@ interface PlansComponentProps {
 }
 
 export default function Plans({ props }: PlansComponentProps) {
-  return (
-    <>
-      <Head>
-        <title>Whitebook - Planos</title>
-      </Head>
-      <PlansComponent {...props} />
-    </>
-  );
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
   const installmentsList = [
     { label: 'x1', value: 1 },
     { label: 'x2', value: 2 },
@@ -28,7 +17,18 @@ export const getServerSideProps: GetServerSideProps = async () => {
     { label: 'x12', value: 12 },
   ];
 
+  return (
+    <>
+      <Head>
+        <title>Whitebook - Planos</title>
+      </Head>
+      <PlansComponent installmentsList={installmentsList} />
+    </>
+  );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
-    props: { installmentsList },
+    props: {},
   };
 };

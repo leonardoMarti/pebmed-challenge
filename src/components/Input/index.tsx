@@ -1,29 +1,40 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
+import { FieldError } from 'react-hook-form';
+import { ErrorMessage } from '../ErrorMessage';
 import { Container, SInput } from './styles';
 
 interface InputProps {
-  name: string;
+  id: string;
   label: string;
   placeholder?: string;
   type?: string;
+  maxLength?: number;
+  error?: FieldError;
+  register: any;
 }
 
-const InputBase = (
-  { name, label, placeholder, type = 'text' }: InputProps,
-  ref
-) => {
+export const Input = ({
+  id,
+  label,
+  placeholder,
+  type = 'text',
+  maxLength,
+  error = null,
+  register,
+}: InputProps) => {
+  console.log('🚀 ~ file: index.tsx ~ line 23 ~ error', error);
   return (
     <Container>
       <span className="label">{label}</span>
       <SInput
-        id={`input-${name}`}
-        name={name}
+        id={`input-${id}`}
         type={type}
         placeholder={placeholder}
-        ref={ref}
+        maxLength={maxLength}
+        error={!!error}
+        {...register}
       />
+      {!!error && <ErrorMessage>{error.message}</ErrorMessage>}
     </Container>
   );
 };
-
-export const Input = forwardRef(InputBase);

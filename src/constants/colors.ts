@@ -7,4 +7,5 @@ export const COLORS = {
   GREY100: '#F4F3F6',
   GREY50: '#E1DEE8',
   WHITE100: '#FFFFFF',
+  RED500: '#d54f4f',
 };

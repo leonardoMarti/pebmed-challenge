@@ -3,9 +3,17 @@ import { Container } from './styles';
 
 interface RadioCardProps {
   name: string;
+  value: string;
+  checked?: boolean;
+  register?: any;
 }
 
-export function RadioCard({ name }: RadioCardProps) {
+export function RadioCard({
+  name,
+  register,
+  value,
+  checked = false,
+}: RadioCardProps) {
   return (
     <Container id={name}>
       <div className="content">
@@ -17,7 +25,14 @@ export function RadioCard({ name }: RadioCardProps) {
         <span className="installments">10x de R$ 43,69/mês</span>
       </div>
       <div>
-        <input className="radio" type="radio" name="radio" id="radio1" />
+        <input
+          className="radio"
+          type="radio"
+          id="radio1"
+          value={value}
+          {...register}
+          defaultChecked={checked}
+        />
       </div>
     </Container>
   );
