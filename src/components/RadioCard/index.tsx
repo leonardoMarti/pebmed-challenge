@@ -5,9 +5,9 @@ import { Container } from './styles';
 
 interface RadioCardProps {
   name: string;
-  value: string;
+  value: number;
   checked?: boolean;
-  register?: any;
+  register?: object;
   title: string;
   discount?: number;
   price: number;

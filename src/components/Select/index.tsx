@@ -12,7 +12,7 @@ interface SelectProps {
   placeholder?: string;
   mb?: string;
   options: Option[];
-  register?: any;
+  register?: object;
 }
 
 export function Select({

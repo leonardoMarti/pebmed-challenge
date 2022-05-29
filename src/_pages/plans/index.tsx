@@ -8,9 +8,11 @@ import { Button } from '../../components/Button';
 import { Title } from '../../components/Title';
 import { RadioCard } from '../../components/RadioCard';
 import { ToolTip } from '../../components/ToolTip';
+import { SnackBar } from '../../components/SnackBar';
 
 import { Container, LeftSection, RightSection } from './styles';
 import { Installment, Plan } from './constants';
+import { api } from '../../services/api';
 
 export interface PlansProps {
   installmentsList: Installment[];
@@ -18,15 +20,27 @@ export interface PlansProps {
 }
 
 export function Plans({ installmentsList, plans }: PlansProps) {
-  console.log('🚀  plans', plans);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (values) => {
-    return values;
+  const onSubmit = async (values) => {
+    const resquestData = {
+      ...values,
+      couponCode: Number(values.couponCode),
+      installments: Number(values.installments),
+      offerId: Number(values.offerId),
+      gateway: 'iugu',
+      userId: 1,
+    };
+    try {
+      await api.post('/subscription', { ...resquestData });
+      SnackBar.SUCCESS('Compra realizada com sucesso!');
+    } catch (error) {
+      SnackBar.ERROR('Tivemos uma problema para concluir sua compra!');
+    }
   };
 
   return (
@@ -40,6 +54,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
           <div className="creditCardWrapper">
             <CreditCards />
           </div>
+
           <Input
             id="credit-card-number"
             label="Número do cartão"
@@ -55,6 +70,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
               id="credit-card-expiration-date"
               label="Validade"
               placeholder="MM/AA"
+              maxLength={4}
               error={errors.creditCardExpirationDate}
               register={register('creditCardExpirationDate', {
                 required: 'Campo obrigatório',
@@ -75,6 +91,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
             id="creditCardHolder"
             label="Nome impresso no cartão"
             placeholder="Seu nome"
+            maxLength={100}
             error={errors.creditCardHolder}
             register={register('creditCardHolder', {
               required: 'Campo obrigatório',
@@ -84,6 +101,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
             id="credit-card-cpf"
             label="CPF"
             placeholder="000.000.000-00"
+            maxLength={11}
             error={errors.creditCardCPF}
             register={register('creditCardCPF', {
               required: 'Campo obrigatório',
@@ -109,7 +127,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
               required: 'Campo obrigatório',
             })}
           />
-          <div>
+          <div className="buttonWrapper">
             <Button name="submitPlans" type="submit">
               <span className="buttonLabel">Finalizar pagamento</span>
             </Button>
@@ -129,8 +147,8 @@ export function Plans({ installmentsList, plans }: PlansProps) {
                 price={plan.fullPrice}
                 title={`${plan.title} | ${plan.description}`}
                 installments={plan.installments}
-                value={plan.storeId}
-                register={register('installments')}
+                value={plan.id}
+                register={register('offerId')}
                 checked={plan.order === 1}
               />
             ))}
@@ -141,6 +159,11 @@ export function Plans({ installmentsList, plans }: PlansProps) {
               label="Sobre a cobrança"
               description="Descrição da cobrança"
             />
+          </div>
+          <div className="buttonWrapper">
+            <Button name="submitPlans" type="submit">
+              <span className="buttonLabel">Finalizar pagamento</span>
+            </Button>
           </div>
         </RightSection>
       </form>

@@ -10,7 +10,7 @@ interface InputProps {
   type?: string;
   maxLength?: number;
   error?: FieldError;
-  register: any;
+  register: object;
 }
 
 export const Input = ({
@@ -22,7 +22,6 @@ export const Input = ({
   error = null,
   register,
 }: InputProps) => {
-  console.log('🚀 ~ file: index.tsx ~ line 23 ~ error', error);
   return (
     <Container>
       <span className="label">{label}</span>

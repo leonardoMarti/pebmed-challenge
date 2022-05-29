@@ -56,10 +56,16 @@ export const LeftSection = styled.div`
     justify-content: center;
   }
 
-  .buttonLabel {
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-    color: ${COLORS.WHITE100};
+  .buttonWrapper {
+    ${MEDIA_QUERIES.smDown} {
+      display: none;
+    }
+
+    .buttonLabel {
+      font-size: 0.875rem;
+      line-height: 1.125rem;
+      color: ${COLORS.WHITE100};
+    }
   }
 `;
 
@@ -110,9 +116,15 @@ export const RightSection = styled.div`
     }
   }
 
-  .buttonLabel {
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-    color: ${COLORS.WHITE100};
+  .buttonWrapper {
+    ${MEDIA_QUERIES.smUp} {
+      display: none;
+    }
+
+    .buttonLabel {
+      font-size: 0.875rem;
+      line-height: 1.125rem;
+      color: ${COLORS.WHITE100};
+    }
   }
 `;
