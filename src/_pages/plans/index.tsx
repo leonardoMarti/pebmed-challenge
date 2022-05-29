@@ -10,17 +10,15 @@ import { RadioCard } from '../../components/RadioCard';
 import { ToolTip } from '../../components/ToolTip';
 
 import { Container, LeftSection, RightSection } from './styles';
-
-export interface Installment {
-  label: string;
-  value: number;
-}
+import { Installment, Plan } from './constants';
 
 export interface PlansProps {
   installmentsList: Installment[];
+  plans: Plan[];
 }
 
-export function Plans({ installmentsList }: PlansProps) {
+export function Plans({ installmentsList, plans }: PlansProps) {
+  console.log('🚀  plans', plans);
   const {
     register,
     handleSubmit,
@@ -39,11 +37,9 @@ export function Plans({ installmentsList }: PlansProps) {
             <Title label="Estamos quase lá!" mb={0.625} />
             <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
           </div>
-
           <div className="creditCardWrapper">
             <CreditCards />
           </div>
-
           <Input
             id="credit-card-number"
             label="Número do cartão"
@@ -75,7 +71,6 @@ export function Plans({ installmentsList }: PlansProps) {
               })}
             />
           </div>
-
           <Input
             id="creditCardHolder"
             label="Nome impresso no cartão"
@@ -125,19 +120,20 @@ export function Plans({ installmentsList }: PlansProps) {
             <Title label="Confira o seu plano:" mb={0.375} />
             <span className="email">fulano@cicrano.com.br</span>
           </div>
-
           <div className="radioCardWrapper">
-            <RadioCard
-              name="radio"
-              value="plan1"
-              register={register('installments')}
-              checked
-            />
-            <RadioCard
-              name="radio"
-              value="plan2"
-              register={register('installments')}
-            />
+            {plans?.map((plan) => (
+              <RadioCard
+                key={plan?.id}
+                name="radio"
+                discount={plan.discountPercentage}
+                price={plan.fullPrice}
+                title={`${plan.title} | ${plan.description}`}
+                installments={plan.installments}
+                value={plan.storeId}
+                register={register('installments')}
+                checked={plan.order === 1}
+              />
+            ))}
           </div>
           <div className="toolTipWrapper">
             <ToolTip

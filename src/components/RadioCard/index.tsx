@@ -1,4 +1,6 @@
 import React from 'react';
+import { formatCurrency } from '../../utils/currency';
+import { Show } from '../Show';
 import { Container } from './styles';
 
 interface RadioCardProps {
@@ -6,23 +8,50 @@ interface RadioCardProps {
   value: string;
   checked?: boolean;
   register?: any;
+  title: string;
+  discount?: number;
+  price: number;
+  installments: number;
 }
 
 export function RadioCard({
   name,
-  register,
   value,
+  register,
   checked = false,
+  title,
+  discount,
+  price,
+  installments,
 }: RadioCardProps) {
+  const discountedPrice = price - discount * price;
+
+  const handlePrice = (price: number) => {
+    return `De ${formatCurrency(price)} | Por ${formatCurrency(
+      discountedPrice
+    )}`;
+  };
+
+  const handleInstallments = () => {
+    const installmentAmount = discountedPrice / installments;
+    return `${installments}x de ${formatCurrency(installmentAmount)}/mês`;
+  };
+
   return (
     <Container id={name}>
       <div className="content">
-        <span className="title">Anual | À Vista</span>
+        <span className="title">{title}</span>
         <div className="priceWrapper">
-          <span className="price">De R$ 514,80 | Por R$ 436,90</span>
-          <div className="discount">-15%</div>
+          <Show when={Boolean(price && discount)}>
+            <span className="price">{handlePrice(price)}</span>
+          </Show>
+          <Show when={discount > 0}>
+            <div className="discount">{`-${discount * 100}%`}</div>
+          </Show>
         </div>
-        <span className="installments">10x de R$ 43,69/mês</span>
+        <Show when={Boolean(discountedPrice && installments)}>
+          <span className="installments">{handleInstallments()}</span>
+        </Show>
       </div>
       <div>
         <input
