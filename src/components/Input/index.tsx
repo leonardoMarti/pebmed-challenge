@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Container, SInput } from './styles';
 
 interface InputProps {
@@ -8,7 +8,10 @@ interface InputProps {
   type?: string;
 }
 
-export function Input({ name, label, placeholder, type = 'text' }: InputProps) {
+const InputBase = (
+  { name, label, placeholder, type = 'text' }: InputProps,
+  ref
+) => {
   return (
     <Container>
       <span className="label">{label}</span>
@@ -17,7 +20,10 @@ export function Input({ name, label, placeholder, type = 'text' }: InputProps) {
         name={name}
         type={type}
         placeholder={placeholder}
+        ref={ref}
       />
     </Container>
   );
-}
+};
+
+export const Input = forwardRef(InputBase);

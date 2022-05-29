@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, LeftSection, RightSection } from './styles';
+import { useForm } from 'react-hook-form';
+
 import { CreditCards } from '../../components/CreditCards';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
@@ -7,6 +8,8 @@ import { Button } from '../../components/Button';
 import { Title } from '../../components/Title';
 import { RadioCard } from '../../components/RadioCard';
 import { ToolTip } from '../../components/ToolTip';
+
+import { Container, LeftSection, RightSection } from './styles';
 
 export interface Installment {
   label: string;
@@ -18,6 +21,8 @@ export interface PlansProps {
 }
 
 export function Plans({ installmentsList }: PlansProps) {
+  const { register, handleSubmit } = useForm();
+
   return (
     <Container>
       <LeftSection>
@@ -34,23 +39,41 @@ export function Plans({ installmentsList }: PlansProps) {
           name="creditCardNumber"
           label="Número do cartão"
           placeholder="0000 0000 0000 0000"
+          {...register('creditCardNumber')}
         />
         <div className="inputWrapper">
           <Input
             name="creditCardExpirationDate"
             label="Validade"
             placeholder="MM/AA"
+            {...register('creditCardExpirationDate')}
           />
-          <Input name="creditCardCVV" label="CVV" placeholder="000" />
+          <Input
+            name="creditCardCVV"
+            label="CVV"
+            placeholder="000"
+            {...register('creditCardCVV')}
+          />
         </div>
 
         <Input
           name="creditCardHolder"
           label="Nome impresso no cartão"
           placeholder="Seu nome"
+          {...register('creditCardHolder')}
         />
-        <Input name="creditCardCPF" label="CPF" placeholder="000.000.000-00" />
-        <Input name="couponCode" label="Cupom" placeholder="Insira aqui" />
+        <Input
+          name="creditCardCPF"
+          label="CPF"
+          placeholder="000.000.000-00"
+          {...register('creditCardCPF')}
+        />
+        <Input
+          name="couponCode"
+          label="Cupom"
+          placeholder="Insira aqui"
+          {...register('couponCode')}
+        />
         <Select
           options={installmentsList}
           name="installments"
