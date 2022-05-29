@@ -3,14 +3,17 @@ import { AppProps } from 'next/app';
 import { GlobalStyle } from '../../styles/global';
 import { Header } from '../components/Header';
 import { ToastSnackBar } from '../components/ToastifySnackBar';
+import { SubscriptioContextProvider } from '../context/subscription';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <GlobalStyle />
-      <ToastSnackBar />
-      <Header />
-      <Component {...pageProps} />
+      <SubscriptioContextProvider>
+        <GlobalStyle />
+        <ToastSnackBar />
+        <Header />
+        <Component {...pageProps} />
+      </SubscriptioContextProvider>
     </>
   );
 }

@@ -10,9 +10,13 @@ import { RadioCard } from '../../components/RadioCard';
 import { ToolTip } from '../../components/ToolTip';
 import { SnackBar } from '../../components/SnackBar';
 
+import { useSubscription } from '../../hooks/use-subscription';
+
 import { Container, LeftSection, RightSection } from './styles';
 import { Installment, Plan } from './constants';
 import { api } from '../../services/api';
+import { useRouter } from 'next/router';
+import { ROUTES } from '../../constants/routes';
 
 export interface PlansProps {
   installmentsList: Installment[];
@@ -20,11 +24,15 @@ export interface PlansProps {
 }
 
 export function Plans({ installmentsList, plans }: PlansProps) {
+  const { setSubscription } = useSubscription();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const router = useRouter();
 
   const onSubmit = async (values) => {
     const resquestData = {
@@ -35,9 +43,12 @@ export function Plans({ installmentsList, plans }: PlansProps) {
       gateway: 'iugu',
       userId: 1,
     };
+
     try {
-      await api.post('/subscription', { ...resquestData });
+      await api.post(ROUTES.SUBSCRIPTION, { ...resquestData });
+      setSubscription(resquestData);
       SnackBar.SUCCESS('Compra realizada com sucesso!');
+      router.push('/feedback');
     } catch (error) {
       SnackBar.ERROR('Tivemos uma problema para concluir sua compra!');
     }

@@ -6,6 +6,7 @@ import { api } from '../services/api';
 
 import { Plans as PlansComponent } from '../_pages/plans';
 import { Installment, Plan } from '../_pages/plans/constants';
+import { ROUTES } from '../constants/routes';
 
 interface PlansComponentProps {
   plans: Plan[];
@@ -24,7 +25,7 @@ export default function Plans(props: PlansComponentProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data: plans } = await api.get('/offer');
+  const { data: plans } = await api.get(ROUTES.OFFER);
 
   const installmentsList = [
     { label: 'x1', value: 1 },

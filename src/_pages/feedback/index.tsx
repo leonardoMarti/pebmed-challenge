@@ -4,8 +4,11 @@ import { Container, PreviewProduct } from './styles';
 import { Title } from '../../components/Title';
 import { Button } from '../../components/Button';
 import { COLORS } from '../../constants/colors';
+import { useSubscription } from '../../hooks/use-subscription';
 
 export function FeedBack() {
+  const { subscription } = useSubscription();
+
   return (
     <Container>
       <div className="successWrapper">
