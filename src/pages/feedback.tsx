@@ -35,6 +35,7 @@ export default function FeedBack() {
               height="40px"
               alt="Star"
             />
+
             <div className="priceWrapper">
               <span className="plan">Anual | Parcelado</span>
               <span className="price">R$ 479,90 | 10x R$ 47,99</span>
@@ -43,7 +44,7 @@ export default function FeedBack() {
           <div className="fieldWrapper">
             <div className="field">
               <span className="label">E-mail</span>
-              <span className=" ">fulano@cicrano.com.br</span>
+              <span className="value">fulano@cicrano.com.br</span>
             </div>
             <div className="field">
               <span className="label">CPF</span>

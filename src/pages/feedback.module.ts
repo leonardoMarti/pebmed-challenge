@@ -9,6 +9,10 @@ export const Container = styled.div`
   max-width: 343px;
   margin: 0 auto;
 
+  ${MEDIA_QUERIES.smDown} {
+    padding: 0 1.25rem;
+  }
+
   .successWrapper {
     margin-bottom: 1.125rem;
   }
@@ -20,6 +24,10 @@ export const Container = styled.div`
     margin-bottom: 3.5625rem;
     text-align: center;
     color: ${COLORS.GREY300};
+
+    ${MEDIA_QUERIES.smDown} {
+      margin-bottom: 2rem;
+    }
   }
 
   .buttonWrapper {
@@ -53,6 +61,10 @@ export const PreviewProduct = styled.div`
   padding: 0.9375rem 1.0625rem 1.5rem 1rem;
   margin-bottom: 5.5rem;
 
+  ${MEDIA_QUERIES.smDown} {
+    margin-bottom: 3rem;
+  }
+
   .card {
     display: flex;
     justify-content: space-between;
@@ -71,12 +83,14 @@ export const PreviewProduct = styled.div`
         line-height: 1.25rem;
         margin-bottom: 0.5rem;
         color: ${COLORS.BLUE900};
+        text-align: end;
       }
 
       .price {
         font-size: 0.875rem;
         line-height: 1.125rem;
         color: ${COLORS.BLUE900};
+        text-align: end;
       }
     }
   }
@@ -98,8 +112,12 @@ export const PreviewProduct = styled.div`
       }
 
       .value {
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+
+        ${MEDIA_QUERIES.smDown} {
+          word-break: break-all;
+        }
       }
     }
   }
