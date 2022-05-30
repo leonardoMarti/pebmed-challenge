@@ -2,9 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import { Container } from './styles';
 
-export function CreditCards() {
+interface CreditCardsProps {
+  id: string;
+}
+
+export function CreditCards({ id }: CreditCardsProps) {
   return (
-    <Container>
+    <Container id={id}>
       <div className="cardsWrapper">
         <Image
           src="/images/master.svg"

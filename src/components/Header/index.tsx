@@ -8,7 +8,7 @@ export function Header() {
 
   return (
     <Container>
-      <div onClick={() => back()}>
+      <div id="go-back-button" onClick={() => back()}>
         <Image
           src="/images/arrow-left.svg"
           width="8px"

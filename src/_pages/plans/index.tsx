@@ -68,7 +68,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
             <h2 className="subTitle">Insira seus dados de pagamento abaixo:</h2>
           </div>
           <div className="creditCardWrapper">
-            <CreditCards />
+            <CreditCards id="credit-cards-id" />
           </div>
 
           <Input
@@ -166,7 +166,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
             {plans?.map((plan) => (
               <RadioCard
                 key={plan?.id}
-                name="radio"
+                id={`plan-radio-${plan?.id}`}
                 discount={plan.discountPercentage}
                 price={plan.fullPrice}
                 title={`${plan.title} | ${plan.description}`}

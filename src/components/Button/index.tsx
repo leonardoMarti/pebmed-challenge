@@ -5,12 +5,11 @@ interface ButtonProps {
   children: React.ReactNode;
   name: string;
   type: 'submit' | 'button' | 'reset';
-  hidden?: boolean;
 }
 
-export function Button({ children, type, name, hidden = false }: ButtonProps) {
+export function Button({ children, type, name }: ButtonProps) {
   return (
-    <SButton id={`button-${name}`} type={type} hidden={hidden}>
+    <SButton id={`button-${name}`} type={type}>
       {children}
     </SButton>
   );

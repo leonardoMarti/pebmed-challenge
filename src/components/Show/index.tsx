@@ -6,5 +6,5 @@ interface ShowProps {
 }
 
 export function Show({ when, children }: ShowProps) {
-  return when ? <>{children}</> : <></>;
+  return when && <>{children}</>;
 }

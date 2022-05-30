@@ -1,21 +1,21 @@
 import React from 'react';
-import { formatCurrency } from '../../utils/currency';
+import { calculateDiscount, formatCurrency } from '../../utils/currency';
 import { Show } from '../Show';
 import { Container } from './styles';
 
 interface RadioCardProps {
-  name: string;
+  id: string;
   value: number;
   checked?: boolean;
   register?: object;
   title: string;
-  discount?: number;
+  discount: number;
   price: number;
   installments: number;
 }
 
 export function RadioCard({
-  name,
+  id,
   value,
   register,
   checked = false,
@@ -24,7 +24,18 @@ export function RadioCard({
   price,
   installments,
 }: RadioCardProps) {
-  const discountedPrice = price - discount * price;
+  console.log(
+    'VALUES',
+    id,
+    value,
+    register,
+    (checked = false),
+    title,
+    discount,
+    price,
+    installments
+  );
+  const discountedPrice = calculateDiscount(price, discount);
 
   const handlePrice = (price: number) => {
     return `De ${formatCurrency(price)} | Por ${formatCurrency(
@@ -38,7 +49,7 @@ export function RadioCard({
   };
 
   return (
-    <Container id={name}>
+    <Container id={id}>
       <div className="content">
         <span className="title">{title}</span>
         <div className="priceWrapper">
@@ -57,7 +68,7 @@ export function RadioCard({
         <input
           className="radio"
           type="radio"
-          id="radio1"
+          id={id}
           value={value}
           {...register}
           defaultChecked={checked}

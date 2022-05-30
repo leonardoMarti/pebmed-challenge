@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Header } from '.';
 
 jest.mock('next/router', () => {
@@ -13,7 +13,9 @@ jest.mock('next/router', () => {
 });
 
 describe('Header component', () => {
+  render(<Header />);
+
   it('renders correctly', () => {
-    render(<Header />);
+    expect(screen.queryAllByTestId(/go-back-button/i)).toBeTruthy();
   });
 });
