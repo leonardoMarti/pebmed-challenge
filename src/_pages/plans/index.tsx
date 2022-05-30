@@ -27,6 +27,8 @@ export interface PlansProps {
 }
 
 export function Plans({ installmentsList, plans }: PlansProps) {
+  const { setUser } = useUser();
+
   const {
     register,
     handleSubmit,
@@ -48,14 +50,13 @@ export function Plans({ installmentsList, plans }: PlansProps) {
       userId: 1,
     };
 
-    console.log('🚀  resquestData', resquestData);
-
     const currentPlan = plans.find(
       (plan) => plan.id === Number(values.offerId)
     );
 
     try {
       await api.post(ROUTES.SUBSCRIPTION, { ...resquestData });
+      setUser({ creditCardCPF: values.creditCardCPF });
       SnackBar.SUCCESS('Compra realizada com sucesso!');
       router.push({
         pathname: '/feedback',
@@ -87,7 +88,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
                 id="credit-card-number"
                 label="Número do cartão"
                 placeholder="0000 0000 0000 0000"
-                error={errors ? errors?.creditCardNumber : undefined}
+                error={errors?.creditCardNumber}
                 maxLength={19}
                 minLength={16}
                 onChange={onChange}
@@ -106,7 +107,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
                   id="credit-card-expiration-date"
                   label="Validade"
                   placeholder="MM/AA"
-                  error={errors ? errors?.creditCardExpirationDate : undefined}
+                  error={errors?.creditCardExpirationDate}
                   maxLength={5}
                   minLength={4}
                   onChange={onChange}
@@ -149,7 +150,7 @@ export function Plans({ installmentsList, plans }: PlansProps) {
                 id="credit-card-cpf"
                 label="CPF"
                 placeholder="000.000.000-00"
-                error={errors ? errors?.creditCardCPF : undefined}
+                error={errors?.creditCardCPF}
                 maxLength={14}
                 minLength={11}
                 onChange={onChange}

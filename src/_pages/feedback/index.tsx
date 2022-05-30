@@ -11,6 +11,7 @@ import {
   formatInstallments,
 } from '../../utils/currency';
 import { Plan } from '../../constants/pages/plan';
+import { useUser } from '../../hooks/use-user';
 
 interface FeedbackProps {
   plans: Plan[];
@@ -23,6 +24,7 @@ interface PlanValues {
 
 export function Feedback({ plans }: FeedbackProps) {
   const [plan, setPlan] = useState<PlanValues>();
+  const { user } = useUser();
 
   const router = useRouter();
 
@@ -80,7 +82,9 @@ export function Feedback({ plans }: FeedbackProps) {
           </div>
           <div className="field">
             <span className="label">CPF</span>
-            <span className="value">000.000.000-00</span>
+            <span className="value">
+              {user?.creditCardCPF || '000.000.000-00'}
+            </span>
           </div>
         </div>
       </PreviewProduct>

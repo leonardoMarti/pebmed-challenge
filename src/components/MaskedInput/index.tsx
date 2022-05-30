@@ -44,7 +44,7 @@ export const MaskedInput = ({
         type={type}
         placeholder={placeholder}
         maxLength={maxLength}
-        error={!!error}
+        error={error}
         onChange={onChange}
         options={{ ...options }}
       />
