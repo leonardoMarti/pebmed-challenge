@@ -24,17 +24,6 @@ export function RadioCard({
   price,
   installments,
 }: RadioCardProps) {
-  console.log(
-    'VALUES',
-    id,
-    value,
-    register,
-    (checked = false),
-    title,
-    discount,
-    price,
-    installments
-  );
   const discountedPrice = calculateDiscount(price, discount);
 
   const handlePrice = (price: number) => {

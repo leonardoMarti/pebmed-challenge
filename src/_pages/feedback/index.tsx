@@ -36,7 +36,7 @@ export function Feedback({ plans }: FeedbackProps) {
         currentPlan?.discountPercentage
       );
       const installmentAmount = formatInstallments(
-        currentPlan?.fullPrice,
+        discountedPrice,
         currentPlan?.installments
       );
       const price = `${formatCurrency(discountedPrice)} | ${installmentAmount}`;
