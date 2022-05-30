@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { api } from '../services/api';
 
 import { Plans as PlansComponent } from '../_pages/plans';
-import { Installment, Plan } from '../_pages/plans/constants';
+import { Installment, Plan } from '../constants/pages/plan';
 import { ROUTES } from '../constants/routes';
 
 interface PlansComponentProps {

@@ -9,6 +9,7 @@ interface InputProps {
   placeholder?: string;
   type?: string;
   maxLength?: number;
+  minLength?: number;
   error?: FieldError;
   register: object;
 }
@@ -19,6 +20,7 @@ export const Input = ({
   placeholder,
   type = 'text',
   maxLength,
+  minLength,
   error = null,
   register,
 }: InputProps) => {
@@ -33,7 +35,12 @@ export const Input = ({
         error={!!error}
         {...register}
       />
-      {!!error && <ErrorMessage>{error.message}</ErrorMessage>}
+      {error?.type === 'required' && (
+        <ErrorMessage>{error.message}</ErrorMessage>
+      )}
+      {error?.type === 'minLength' && (
+        <ErrorMessage>{`Campo aceita no mínimo ${minLength} caracteres`}</ErrorMessage>
+      )}
     </Container>
   );
 };

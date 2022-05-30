@@ -13,7 +13,7 @@ import { SnackBar } from '../../components/SnackBar';
 import { useSubscription } from '../../hooks/use-subscription';
 
 import { Container, LeftSection, RightSection } from './styles';
-import { Installment, Plan } from './constants';
+import { Installment, Plan } from '../../constants/pages/plan';
 import { api } from '../../services/api';
 import { useRouter } from 'next/router';
 import { ROUTES } from '../../constants/routes';
@@ -24,8 +24,6 @@ export interface PlansProps {
 }
 
 export function Plans({ installmentsList, plans }: PlansProps) {
-  const { setSubscription } = useSubscription();
-
   const {
     register,
     handleSubmit,
@@ -44,11 +42,18 @@ export function Plans({ installmentsList, plans }: PlansProps) {
       userId: 1,
     };
 
+    const currentPlan = plans.find(
+      (plan) => plan.id === Number(values.offerId)
+    );
+
     try {
       await api.post(ROUTES.SUBSCRIPTION, { ...resquestData });
-      setSubscription(resquestData);
+
       SnackBar.SUCCESS('Compra realizada com sucesso!');
-      router.push('/feedback');
+      router.push({
+        pathname: '/feedback',
+        query: { offerId: currentPlan.id },
+      });
     } catch (error) {
       SnackBar.ERROR('Tivemos uma problema para concluir sua compra!');
     }
@@ -72,8 +77,10 @@ export function Plans({ installmentsList, plans }: PlansProps) {
             placeholder="0000 0000 0000 0000"
             error={errors.creditCardNumber}
             maxLength={16}
+            minLength={16}
             register={register('creditCardNumber', {
               required: 'Campo obrigatório',
+              minLength: 16,
             })}
           />
           <div className="inputWrapper">
@@ -82,9 +89,11 @@ export function Plans({ installmentsList, plans }: PlansProps) {
               label="Validade"
               placeholder="MM/AA"
               maxLength={4}
+              minLength={4}
               error={errors.creditCardExpirationDate}
               register={register('creditCardExpirationDate', {
                 required: 'Campo obrigatório',
+                minLength: 4,
               })}
             />
             <Input
@@ -92,9 +101,11 @@ export function Plans({ installmentsList, plans }: PlansProps) {
               label="CVV"
               placeholder="000"
               maxLength={3}
+              minLength={3}
               error={errors.creditCardCVV}
               register={register('creditCardCVV', {
                 required: 'Campo obrigatório',
+                minLength: 3,
               })}
             />
           </div>
@@ -103,9 +114,11 @@ export function Plans({ installmentsList, plans }: PlansProps) {
             label="Nome impresso no cartão"
             placeholder="Seu nome"
             maxLength={100}
+            minLength={3}
             error={errors.creditCardHolder}
             register={register('creditCardHolder', {
               required: 'Campo obrigatório',
+              minLength: 3,
             })}
           />
           <Input
@@ -113,20 +126,20 @@ export function Plans({ installmentsList, plans }: PlansProps) {
             label="CPF"
             placeholder="000.000.000-00"
             maxLength={11}
+            minLength={11}
             error={errors.creditCardCPF}
             register={register('creditCardCPF', {
               required: 'Campo obrigatório',
+              minLength: 11,
             })}
           />
           <Input
             id="coupon-code"
             label="Cupom"
             placeholder="Insira aqui"
-            maxLength={2}
+            maxLength={6}
             error={errors.couponCode}
-            register={register('couponCode', {
-              required: 'Campo obrigatório',
-            })}
+            register={register('couponCode')}
           />
           <Select
             options={installmentsList}

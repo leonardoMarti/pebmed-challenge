@@ -1,13 +1,52 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Container, PreviewProduct } from './styles';
 import { Title } from '../../components/Title';
 import { Button } from '../../components/Button';
 import { COLORS } from '../../constants/colors';
-import { useSubscription } from '../../hooks/use-subscription';
+import { useRouter } from 'next/router';
+import {
+  calculateDiscount,
+  formatCurrency,
+  formatInstallments,
+} from '../../utils/currency';
+import { Plan } from '../../constants/pages/plan';
 
-export function FeedBack() {
-  const { subscription } = useSubscription();
+interface FeedbackProps {
+  plans: Plan[];
+}
+
+interface PlanValues {
+  title: string;
+  price: string;
+}
+
+export function Feedback({ plans }: FeedbackProps) {
+  const [plan, setPlan] = useState<PlanValues>();
+
+  const router = useRouter();
+
+  const getCurrentPlan = async () => {
+    const offerId = router.query.offerId;
+    const currentPlan = plans?.find((plan) => plan.id === Number(offerId));
+    if (currentPlan) {
+      const title = `${currentPlan?.title} | ${currentPlan?.description}`;
+      const discountedPrice = calculateDiscount(
+        currentPlan?.fullPrice,
+        currentPlan?.discountPercentage
+      );
+      const installmentAmount = formatInstallments(
+        currentPlan?.fullPrice,
+        currentPlan?.installments
+      );
+      const price = `${formatCurrency(discountedPrice)} | ${installmentAmount}`;
+      setPlan({ title, price });
+    }
+  };
+
+  useEffect(() => {
+    getCurrentPlan();
+  }, []);
 
   return (
     <Container>
@@ -30,8 +69,8 @@ export function FeedBack() {
           <Image src="/images/star.svg" width="40px" height="40px" alt="Star" />
 
           <div className="priceWrapper">
-            <span className="plan">Anual | Parcelado</span>
-            <span className="price">R$ 479,90 | 10x R$ 47,99</span>
+            <span className="plan">{plan?.title}</span>
+            <span className="price">{plan?.price}</span>
           </div>
         </div>
         <div className="fieldWrapper">
