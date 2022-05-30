@@ -29,9 +29,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const installmentsList = [
     { label: 'x1', value: 1 },
-    { label: 'x2', value: 2 },
-    { label: 'x4', value: 4 },
-    { label: 'x6', value: 6 },
     { label: 'x12', value: 12 },
   ];
 

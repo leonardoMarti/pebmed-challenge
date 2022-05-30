@@ -7,5 +7,9 @@ interface ErrorMessageProps {
 }
 
 export function ErrorMessage({ id, children }: ErrorMessageProps) {
-  return <Error id={id}>{children}</Error>;
+  return (
+    <Error id={id} data-testid={id}>
+      {children}
+    </Error>
+  );
 }

@@ -35,12 +35,12 @@ export const MaskedInput = ({
   onChange,
   options,
 }: InputProps) => {
-  console.log('🚀  error', error);
   return (
     <Container>
       <span className="label">{label}</span>
       <SInput
-        id={`input-${id}`}
+        id={id}
+        data-testid={id}
         type={type}
         placeholder={placeholder}
         maxLength={maxLength}

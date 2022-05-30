@@ -11,7 +11,7 @@ interface InputProps {
   maxLength?: number;
   minLength?: number;
   error?: FieldError;
-  register: object;
+  register?: object;
 }
 
 export const Input = ({
@@ -28,7 +28,8 @@ export const Input = ({
     <Container>
       <span className="label">{label}</span>
       <SInput
-        id={`input-${id}`}
+        data-testid={id}
+        id={id}
         type={type}
         placeholder={placeholder}
         maxLength={maxLength}
