@@ -4,11 +4,11 @@ import { Container } from './styles';
 import { useRouter } from 'next/router';
 
 export function Header() {
-  const router = useRouter();
+  const { back } = useRouter();
 
   return (
     <Container>
-      <div onClick={() => router.back()}>
+      <div onClick={() => back()}>
         <Image
           src="/images/arrow-left.svg"
           width="8px"

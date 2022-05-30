@@ -3,8 +3,9 @@ import { Error } from './styles';
 
 interface ErrorMessageProps {
   children: string;
+  id: string;
 }
 
-export function ErrorMessage({ children }: ErrorMessageProps) {
-  return <Error>{children}</Error>;
+export function ErrorMessage({ id, children }: ErrorMessageProps) {
+  return <Error id={id}>{children}</Error>;
 }

@@ -36,10 +36,12 @@ export const Input = ({
         {...register}
       />
       {error?.type === 'required' && (
-        <ErrorMessage>{error.message}</ErrorMessage>
+        <ErrorMessage id={`error-message-${id}`}>{error.message}</ErrorMessage>
       )}
       {error?.type === 'minLength' && (
-        <ErrorMessage>{`Campo aceita no mínimo ${minLength} caracteres`}</ErrorMessage>
+        <ErrorMessage
+          id={`error-message-${id}`}
+        >{`Campo aceita no mínimo ${minLength} caracteres`}</ErrorMessage>
       )}
     </Container>
   );
