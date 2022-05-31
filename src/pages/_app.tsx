@@ -4,6 +4,7 @@ import { GlobalStyle } from '../../styles/global';
 import { Header } from '../components/Header';
 import { ToastSnackBar } from '../components/ToastifySnackBar';
 import { UserContextProvider } from '../context/user';
+import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

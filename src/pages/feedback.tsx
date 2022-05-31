@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { Feedback as FeedBackComponent } from '../_pages/feedback';
+import { Feedback as FeedBackComponent } from '../app/feedback';
 import { GetServerSideProps } from 'next';
 import { api } from '../services/api';
 import { ROUTES } from '../constants/routes';
