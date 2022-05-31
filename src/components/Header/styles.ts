@@ -18,4 +18,8 @@ export const Container = styled.header`
     width: 100%;
     margin-right: 8px;
   }
+
+  .button {
+    cursor: pointer;
+  }
 `;
