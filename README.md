@@ -5,7 +5,7 @@
 
 ## 🚀 Features
 
-- [x] Cadastro informações do cartão.
+- [x] Cadastro de informações do cartão.
 - [x] Seleção de planos.
 - [x] Feedback com as informações da compra.
 <br/><br/>
@@ -17,7 +17,7 @@ Ambiente de demonstração: [WhiteBook](https://pebmed-challenge-wine.vercel.app
 
 ### 📋 Pré-requisitos
 
-**1.** É recomendavel estar com a versão Node em ^16.0.0, caso não tenha [Node](https://nodejs.org/en/download/). Caso já tenha e queira gerenciar as versões do Node, uma dica é o [NVM](https://github.com/nvm-sh/nvm). 
+**1.** É recomendável estar com a versão Node em ^16.0.0, caso não tenha [Node](https://nodejs.org/en/download/). Caso já tenha e queira gerenciar as versões do Node, uma dica é o [NVM](https://github.com/nvm-sh/nvm). 
 
 **2.** Instale às dependências do projeto usando o gerenciador de pacotes [Yarn](https://yarnpkg.com/getting-started/install).
 <br/><br/>
